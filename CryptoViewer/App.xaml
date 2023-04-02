@@ -1,0 +1,34 @@
+﻿<Application x:Class="CryptoViewer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CryptoViewer"
+             xmlns:viewModel="clr-namespace:CryptoViewer.MVVM.ViewModel"
+             xmlns:view="clr-namespace:CryptoViewer.MVVM.View"
+             StartupUri="MVVM/View/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/NavigationButton.xaml"/>
+                <ResourceDictionary Source="Style/CloseButton.xaml"/>
+                <ResourceDictionary Source="Style/RoundedWindow.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:InfoViewModel}">
+                <view:InfoView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ConverterViewModel}">
+                <view:ConverterView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SearchViewModel}">
+                <view:SearchView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
