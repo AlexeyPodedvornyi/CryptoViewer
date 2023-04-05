@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoViewer.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +26,14 @@ namespace CryptoViewer.MVVM.View
            InitializeComponent();
 
     }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            mainWindow.rbInfo.IsChecked = true;
+            mainWindow.rbInfo.Command.Execute(null);
+            
+        }
     }
 }

@@ -7,13 +7,76 @@
              xmlns:viewModel="clr-namespace:CryptoViewer.MVVM.ViewModel" 
              d:DataContext="{d:DesignInstance Type=viewModel:HomeViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="480" d:DesignWidth="900">
 
-    
-    <Grid Background="LightCyan">
 
-        <ListView ItemsSource="{Binding TopCurrencies}" Grid.Column="3">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        </ListView>
+
+        <Grid Background="#49b8b4" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" 
+                Source="/Images/cup.ico" 
+                Width="60" 
+                Height="60" 
+                Stretch="Fill"
+                Margin="300 15 0 20"
+                VerticalAlignment="Top"
+                />
+
+            <TextBlock Grid.Column="1" 
+            Text="Top crypto currencies"
+                    FontSize="20"
+                    FontWeight="ExtraBlack"
+                    Margin="10 30 0 20"
+                       VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                    />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <ListView  
+            Style="{StaticResource topListView}" 
+                ItemsSource="{Binding TopCurrencies}"
+        ItemContainerStyle="{StaticResource topListViewItem}">
+
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource gridViewHeader}">
+                            <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Rank}"/>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="PriceUSD" DisplayMemberBinding="{Binding Price}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button Width="150" Height="20"
+                Style="{StaticResource actionButton}"
+                        Click="Button_Click"/>
+            </StackPanel>
+
+            <Image Grid.Column="1" 
+                Source="/Images/homeBack.ico" 
+                Width="300" 
+                Height="350" 
+                Stretch="Fill"
+                VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                />
+
+        </Grid>
     </Grid>
 </UserControl>

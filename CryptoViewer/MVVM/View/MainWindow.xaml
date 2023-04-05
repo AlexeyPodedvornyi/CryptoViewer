@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CryptoViewer"
         xmlns:viewModel="clr-namespace:CryptoViewer.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="950"
+        Title="MainWindow" Height="600" Width="900"
         WindowStyle="None"
         ResizeMode="NoResize"
         Style="{StaticResource roundedWindow}"
@@ -55,6 +55,7 @@
                     Content="Detailed Information"
                     Style="{StaticResource navButton}"
                     Command="{Binding NavigateToInfo}"
+                         Name="rbInfo"
                     />
             <RadioButton Grid.Column="2" 
                     Content="Converter"

@@ -11,6 +11,10 @@
                 <ResourceDictionary Source="Style/NavigationButton.xaml"/>
                 <ResourceDictionary Source="Style/CloseButton.xaml"/>
                 <ResourceDictionary Source="Style/RoundedWindow.xaml"/>
+                <ResourceDictionary Source="Style/TopListViewItem.xaml"/>
+                <ResourceDictionary Source="Style/TopListView.xaml"/>
+                <ResourceDictionary Source="Style/GridViewHeader.xaml"/>
+                <ResourceDictionary Source="Style/ActionButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

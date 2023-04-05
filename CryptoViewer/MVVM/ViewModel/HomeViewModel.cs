@@ -25,6 +25,7 @@ namespace CryptoViewer.MVVM.ViewModel
             }
         }
 
+
         public HomeViewModel()
         {
             _topCurrencies = Task.Run(async () => await CryptoCurrency.GetTop10Currencies()).Result;

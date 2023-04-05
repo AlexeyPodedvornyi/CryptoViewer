@@ -1,4 +1,5 @@
 ﻿using CryptoViewer.Core;
+using CryptoViewer.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
