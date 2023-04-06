@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,6 +97,47 @@ namespace CryptoViewer.MVVM.Model
             {
                 return new List<DetailedCryptoCurrency>();
             }
+        }
+
+        public static async Task<double> GetPrice(string id)
+        {
+            HttpRequester requester = new HttpRequester();
+            try
+            {
+                var response = await requester.GetRequest($"https://api.coincap.io/v2/assets/{id}");
+                var a = JsonConvert.DeserializeObject<DetailedCryptoCurrency>(response["data"].ToString());
+                return a.Price;
+            }
+            catch (HttpRequestException)
+            {
+                return 0.00;
+            }
+            catch (ArgumentNullException)
+            {
+                return 0.00;
+            }
+        }
+        public static async Task<List<DetailedCryptoCurrency>> GetAssets()
+        {
+            HttpRequester requester = new HttpRequester();
+            try
+            {
+                var response = await requester.GetRequest($"https://api.coincap.io/v2/assets");
+                return JsonConvert.DeserializeObject<List<DetailedCryptoCurrency>>(response["data"].ToString());
+            }
+            catch (HttpRequestException)
+            {
+                return new List<DetailedCryptoCurrency>();
+            }
+            catch (ArgumentNullException)
+            {
+                return new List<DetailedCryptoCurrency>();
+            }
+        }
+
+        public override string ToString()
+        {
+            return Id;
         }
     }
 }

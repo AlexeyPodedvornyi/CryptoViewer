@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <None Remove="Images\btc.ico" />
+    <None Remove="Images\conv1.ico" />
+    <None Remove="Images\conv2.ico" />
     <None Remove="Images\converter.ico" />
     <None Remove="Images\cup.ico" />
     <None Remove="Images\homeBack.ico" />
@@ -18,13 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\leftArrow.ico" />
-    <Resource Include="Images\rightArrow.ico" />
-    <Resource Include="Images\search.ico" />
+    <Resource Include="Images\conv1.ico" />
+    <Resource Include="Images\conv2.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fonts\" />
+    <Resource Include="Images\leftArrow.ico" />
+    <Resource Include="Images\rightArrow.ico" />
+    <Resource Include="Images\search.ico" />
   </ItemGroup>
 
   <ItemGroup>

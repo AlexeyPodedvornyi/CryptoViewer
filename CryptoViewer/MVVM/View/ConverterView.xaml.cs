@@ -24,5 +24,15 @@ namespace CryptoViewer.MVVM.View
         {
             InitializeComponent();
         }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsNumber(e.Text);
+        }
+
+        private bool IsNumber(string text)
+        {
+            return int.TryParse(text, out _);
+        }
     }
 }
