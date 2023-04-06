@@ -30,7 +30,6 @@ namespace CryptoViewer.MVVM.ViewModel
                     _calculate = new RelayCommand(o =>
                     {
                         Result = Convert();
-                        MessageBox.Show(Result.ToString());
                     });
                 }
 
