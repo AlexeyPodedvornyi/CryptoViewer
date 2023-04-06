@@ -15,6 +15,9 @@
                 <ResourceDictionary Source="Style/TopListView.xaml"/>
                 <ResourceDictionary Source="Style/GridViewHeader.xaml"/>
                 <ResourceDictionary Source="Style/ActionButton.xaml"/>
+                <ResourceDictionary Source="Style/InfoTextBox.xaml"/>
+                <ResourceDictionary Source="Style/InfoLabel.xaml"/>
+                <ResourceDictionary Source="Style/SearchBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -27,10 +30,6 @@
 
             <DataTemplate DataType="{x:Type viewModel:ConverterViewModel}">
                 <view:ConverterView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:SearchViewModel}">
-                <view:SearchView/>
             </DataTemplate>
 
         </ResourceDictionary>

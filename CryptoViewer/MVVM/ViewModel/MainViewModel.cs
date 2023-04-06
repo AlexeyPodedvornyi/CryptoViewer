@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace CryptoViewer.MVVM.ViewModel
 {
@@ -17,7 +18,6 @@ namespace CryptoViewer.MVVM.ViewModel
         public RelayCommand NavigateToHome { get; set; }
         public RelayCommand NavigateToInfo { get; set; }
         public RelayCommand NavigateToConverter { get; set; }
-        public RelayCommand NavigateToSearch { get; set; }
         #endregion
 
         #region View models
@@ -25,7 +25,6 @@ namespace CryptoViewer.MVVM.ViewModel
         public InfoViewModel InfoVM { get; set; }
 
         public ConverterViewModel ConverterVM { get; set; }
-        public SearchViewModel SearchVM { get; set; }
 
         #endregion
 
@@ -40,12 +39,13 @@ namespace CryptoViewer.MVVM.ViewModel
 
         public MainViewModel()
         {
-			HomeVM = new HomeViewModel();
-            InfoVM = new InfoViewModel();
+
+            HomeVM = new HomeViewModel(this);
+            InfoVM = new InfoViewModel(this);
             ConverterVM = new ConverterViewModel();
-            SearchVM = new SearchViewModel();
 
             _currentView = HomeVM;
+
 
             NavigateToHome = new RelayCommand(o =>
             {
@@ -61,11 +61,22 @@ namespace CryptoViewer.MVVM.ViewModel
             {
                 CurrentView = ConverterVM;
             });
-
-            NavigateToSearch = new RelayCommand(o =>
-            {
-                CurrentView = SearchVM;
-            });
         }
+
+        private string _data;
+        private DetailedCryptoCurrency _selected;
+        public string Data
+        {
+            get { return _data; }
+            set { _data = value; OnPropertyChanged(nameof(Data)); }
+        }
+
+        public DetailedCryptoCurrency SelectedCurr
+        {
+            get => _selected;
+            set { _selected = value; OnPropertyChanged(nameof(SelectedCurr));}
+        }
+
+
     }
 }

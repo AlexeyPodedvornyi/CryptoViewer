@@ -8,9 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\btc.ico" />
     <None Remove="Images\converter.ico" />
     <None Remove="Images\cup.ico" />
     <None Remove="Images\homeBack.ico" />
+    <None Remove="Images\leftArrow.ico" />
+    <None Remove="Images\rightArrow.ico" />
+    <None Remove="Images\search.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\leftArrow.ico" />
+    <Resource Include="Images\rightArrow.ico" />
+    <Resource Include="Images\search.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\btc.ico" />
     <Resource Include="Images\homeBack.ico" />
     <Resource Include="Images\converter.ico" />
     <Resource Include="Images\cup.ico" />

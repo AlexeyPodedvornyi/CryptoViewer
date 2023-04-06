@@ -12,11 +12,8 @@ namespace CryptoViewer.MVVM.Model
 {
     public class HttpRequester
     {
-        private readonly HttpClient _httpClient;
-        private static readonly HttpRequester _instance = new HttpRequester();
-
-        public static HttpRequester CurrentRequestor { get => _instance; }
-        private HttpRequester()
+        private readonly HttpClient _httpClient = new HttpClient();
+        public HttpRequester()
         {
             _httpClient = new HttpClient();
         }

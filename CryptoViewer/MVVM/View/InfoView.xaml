@@ -3,10 +3,155 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CryptoViewer.MVVM.View"
+             xmlns:local="clr-namespace:CryptoViewer.MVVM.View" xmlns:viewmodel="clr-namespace:CryptoViewer.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:InfoViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="480" d:DesignWidth="900">
     <Grid Background="AliceBlue">
-        <TextBlock Text="Info" FontSize="100"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#fccc79" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" 
+                Source="/Images/btc.ico" 
+                Width="60" 
+                Height="60" 
+                Stretch="Fill"
+                Margin="300 15 0 20"
+                VerticalAlignment="Top"
+                />
+
+            <TextBlock Grid.Column="1" 
+            Text="Currency Information"
+                    FontSize="20"
+                    FontWeight="ExtraBlack"
+                    Margin="10 30 0 20"
+                       VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                    />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="265"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <Grid Name="InfoGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Row="2" 
+                             Style="{StaticResource infoBox}"
+                             Margin="113,10,37,0"
+                             DataContext="{Binding RequiredItem}"
+                             Text="{Binding Name}" 
+                             Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Row="3" 
+                             Style="{StaticResource infoBox}" 
+                             Margin="113,10,37,0"
+                             DataContext="{Binding RequiredItem}"
+                             Text="{Binding Price}" 
+                             Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Row="4" 
+                             Style="{StaticResource infoBox}" 
+                             Margin="113,10,37,0"
+                             DataContext="{Binding RequiredItem}"
+                             Text="{Binding Volume}" 
+                             Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Row="5" 
+                             Style="{StaticResource infoBox}" 
+                             Margin="113,10,37,0"
+                             DataContext="{Binding RequiredItem}"
+                             Text="{Binding PriceChange}" Grid.ColumnSpan="2"/>
+
+                    <TextBox Grid.Row="1"  
+                             Style="{StaticResource infoBox}" 
+                             Margin="113,10,37,0"
+                             DataContext="{Binding RequiredItem}"
+                             Text="{Binding Rank}" 
+                             Grid.ColumnSpan="2"
+                             />
+
+                    <TextBox Grid.Row="0" 
+                             Style="{StaticResource infoBox}" 
+                             Margin="114,10,36,0"
+                             DataContext="{Binding RequiredItem}"
+                             Text="{Binding Id}"
+                             HorizontalContentAlignment="Center" 
+                             Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Id" Style="{StaticResource infoLabel}" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="Rank" Style="{StaticResource infoLabel}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Name" Style="{StaticResource infoLabel}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="PriceUsd" Style="{StaticResource infoLabel}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Volume" Style="{StaticResource infoLabel}"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="Price Change" Style="{StaticResource infoLabel}"/>
+                </Grid>
+  
+            </StackPanel>
+            
+            <Button Grid.Row="1" Width="40" Height="40"
+                    Background="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Margin="75 0 0 0"
+                        Command="{Binding NavBackward}">
+                <Image Source="/Images/leftArrow.ico" Width="auto" Height="auto"
+                       Stretch="Fill"/>
+            </Button>
+
+            <Button Grid.Row="1" Width="40" Height="40"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0 0 95 0"
+                    Command="{Binding NavForward}">
+                <Image Source="/Images/rightArrow.ico" Width="auto" Height="auto"
+                       Stretch="Fill"/>
+            </Button>
+
+            <ListView Grid.Column="1" Grid.RowSpan="2"
+                              Width="450" Height="300"
+                              Margin="10 10 0 0"
+                              VerticalAlignment="Top"
+                              ItemsSource="{Binding RequiredItem.Exchanges}"
+                              ItemContainerStyle="{StaticResource topListViewItem}">
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource gridViewHeader}">
+                        <GridViewColumn Header="Market name" DisplayMemberBinding="{Binding ExchangeName}"/>
+                        <GridViewColumn Header="Quote id" DisplayMemberBinding="{Binding QuoteId}"/>
+                        <GridViewColumn Header="Quote price" DisplayMemberBinding="{Binding QuotePrice}"/>
+                        <GridViewColumn Header="Price Usd" DisplayMemberBinding="{Binding PriceUsd}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
     </Grid>
 </UserControl>

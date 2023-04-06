@@ -17,6 +17,7 @@
                                        HorizontalAlignment="Center"
                                        FontSize="18"
                                        Foreground="White"
+                                       Name="buttText"
                                        />
                         </Grid>
                     </ControlTemplate>
@@ -30,6 +31,12 @@
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="#0c4387"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#0a2d59"/>
+            </Trigger>
+            <Trigger  Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#1b2f47"/>
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -1,4 +1,5 @@
-﻿using CryptoViewer.MVVM.ViewModel;
+﻿using CryptoViewer.MVVM.Model;
+using CryptoViewer.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,18 @@ namespace CryptoViewer.MVVM.View
 
             mainWindow.rbInfo.IsChecked = true;
             mainWindow.rbInfo.Command.Execute(null);
-            
+            mainWindow.rbInfo.IsEnabled = true;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(searchBox.Text))
+            {
+                var mainWindow = Window.GetWindow(this) as MainWindow;
+                mainWindow.rbInfo.IsChecked = true;
+                mainWindow.rbInfo.Command.Execute(null);
+                mainWindow.rbInfo.IsEnabled = true;
+            }
         }
     }
 }
